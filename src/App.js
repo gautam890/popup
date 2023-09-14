@@ -24,7 +24,6 @@ const showiframe= (e) => {
           src={iframeUrl}
           className="safespace-iframe"
           id="safe-space-iframe"
-          sandbox="allow-scripts allow-popups allow-same-origin"
           title="Safe Space"
           width="100%"
           height="100%" />
