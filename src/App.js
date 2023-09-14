@@ -1,22 +1,38 @@
-import logo from './logo.svg';
 import './App.css';
+import ReactDOM from 'react-dom';
+import { useState } from 'react';
+
+const iframeUrl = 'https://pfw-test-ukwest-safespace.azurewebsites.net/';
 
 function App() {
+ const [isVisible, setVisible] = useState(false);
+
+
+const showiframe= (e) => {
+  setVisible(true);
+}
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+       <div>
+        <button onClick={showiframe}>click me!</button>
+
+        {isVisible ? ReactDOM.createPortal(
+      <div className="iframe-safe-space-popup" data-testid="iframe-safe-space" id="iframe-safe-space">
+        <iframe
+          src={iframeUrl}
+          className="safespace-iframe"
+          id="safe-space-iframe"
+          sandbox="allow-scripts allow-popups allow-same-origin"
+          title="Safe Space"
+          width="100%"
+          height="100%" />
+      </div>,
+      document.body
+    ) : ''}
+
+       </div>
       </header>
     </div>
   );
