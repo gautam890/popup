@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react';
 
 function App() {
  const [html, setHtml] = useState('');
- const [data, setData] =  useState([]);
 
  useEffect( () => {
   fetch('https://apps.parcelforce.com/sso/').then((resp) => {
@@ -13,19 +12,6 @@ function App() {
   })
   .then(function(html) {
     setHtml(html);
-})
-.catch(function(err) {  
-    console.log('Failed to fetch page: ', err);  
-});
- },[])
-
- useEffect( () => {
-  fetch('https://www.royalmail.com/capi/rml/bf/v1/locations/branchFinder?postCode=SY14%208QQ&latitude=53.020465&longitude=-2.761422&searchRadius=40&count=7&appliedFilters=null&officeType=postboxes&type=2').then((resp) => {
-    return resp.json()
-  })
-  .then(function(data) {
-    setData(data);
-    console.log(data);
 })
 .catch(function(err) {  
     console.log('Failed to fetch page: ', err);  
@@ -53,7 +39,6 @@ const hostWidgetInIframe = () => {
        <a  onClick={hostWidgetInIframe} href="javascript:void(0)">
           <img src="/Assets/img/safespace.png"  alt="safe-space" />
        </a>
-       <div>{data}</div>
       </header>
     </div>
   );
