@@ -53,7 +53,7 @@ const hostWidgetInIframe = () => {
        <a  onClick={hostWidgetInIframe} href="javascript:void(0)">
           <img src="/Assets/img/safespace.png"  alt="safe-space" />
        </a>
-       
+       <div>{data}</div>
       </header>
     </div>
   );
